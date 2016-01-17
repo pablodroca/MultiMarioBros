@@ -1,0 +1,25 @@
+<project default="run">
+    <property name="build.dir" value="bin" />
+    <property name="sources.dir" value="src" />
+    <property name="images.build.dir" value="${build.dir}\img" />
+    <property name="images.dir" value="img" />
+    <property environment="env" />
+
+    <target name="clean">
+        <delete dir="${build.dir}"/>
+        <delete dir="${images.dir}"/>
+    </target>
+
+    <target name="compile">
+        <mkdir dir="${build.dir}"/>
+        <mkdir dir="${images.dir}"/>
+        <copy todir="${images.build.dir}">
+            <fileset dir="${images.dir}"/>
+        </copy>
+        <javac srcdir="${sources.dir}" destdir="${build.dir}"/>
+    </target>
+    
+    <target name="run" depends="compile">
+        <java classname="org.supermario.Main" classpath="${build.dir};${env.CLASSPATH}" />
+    </target>
+</project>
