@@ -4,6 +4,7 @@
     <property name="images.build.dir" value="${build.dir}/img" />
     <property name="images.dir" value="src/main/resources/img" />
     <property environment="env" />
+    <property name="build.classpath" value="${build.dir}:${env.CLASSPATH}" />
 
     <target name="clean">
         <delete dir="${build.dir}"/>
@@ -16,10 +17,10 @@
         <copy todir="${images.build.dir}">
             <fileset dir="${images.dir}" includes="**"/>
         </copy>
-        <javac srcdir="${sources.dir}" destdir="${build.dir}"/>
+        <javac srcdir="${sources.dir}" destdir="${build.dir}" classpath="${build.classpath}" includeantruntime="false" />
     </target>
     
     <target name="run" depends="compile">
-        <java classname="org.supermario.Main" classpath="${build.dir}:${env.CLASSPATH}" />
+        <java classname="org.supermario.Main" classpath="${build.classpath}" />
     </target>
 </project>
