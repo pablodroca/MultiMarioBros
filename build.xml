@@ -1,8 +1,8 @@
 <project default="run">
-    <property name="build.dir" value="bin" />
-    <property name="sources.dir" value="src" />
-    <property name="images.build.dir" value="${build.dir}\img" />
-    <property name="images.dir" value="img" />
+    <property name="build.dir" value="target/classes" />
+    <property name="sources.dir" value="src/main/java" />
+    <property name="images.build.dir" value="${build.dir}/img" />
+    <property name="images.dir" value="src/main/resources/img" />
     <property environment="env" />
     <property name="build.classpath" value="${build.dir}:${env.CLASSPATH}" />
 
@@ -15,7 +15,7 @@
         <mkdir dir="${build.dir}"/>
         <mkdir dir="${images.dir}"/>
         <copy todir="${images.build.dir}">
-            <fileset dir="${images.dir}"/>
+            <fileset dir="${images.dir}" includes="**"/>
         </copy>
         <javac srcdir="${sources.dir}" destdir="${build.dir}" classpath="${build.classpath}" includeantruntime="false" />
     </target>
