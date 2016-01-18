@@ -11,47 +11,25 @@ import org.supermario.view.GameView;
 import org.supermario.view.Key;
 import org.supermario.view.KeyboardInputListener;
 
-public class GameController implements KeyboardInputListener {
+public class GameController {
 	private Game game;
-	private Player mario;
+	private Player player;
 	private GameView view;
 	private ExecutorService executor;
+	private KeyboardController keyboardController;
 	
 	public GameController(Game game, GameView view){
 		this.game = game;
 		this.view = view;
-		this.mario = game.getPlayer();
+		this.player = game.getPlayer();
+		this.keyboardController = new KeyboardController(this.player);
 		
 		for (GameElement element : game.getElements()) {
-			if (element != mario) //TODO improve it
+			if (element != player) //TODO improve it
 				this.view.register((Block)element);			
 		}
-		this.view.register(this.mario);
-		this.view.bindTo(this);
-	}
-
-	@Override
-	public void keyPressed(Key key) {
-		if (key == Key.LEFT)
-			mario.goLeft();
-		else if (key == Key.RIGHT)
-			mario.goRight();
-		else if (key == Key.UP)
-			mario.goUp();
-		else if (key == Key.DOWN)
-			mario.goDown();
-	}
-
-	@Override
-	public void keyReleased(Key key) {
-		if (key == Key.LEFT)
-			mario.stop();
-		else if (key == Key.RIGHT)
-			mario.stop();
-		else if (key == Key.UP)
-			mario.stop();
-		else if (key == Key.DOWN)
-			mario.stop();
+		this.view.register(this.player);
+		this.view.bindTo(this.keyboardController);
 	}
 	
 	public void start() {
