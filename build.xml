@@ -1,8 +1,8 @@
 <project default="run">
-    <property name="build.dir" value="bin" />
-    <property name="sources.dir" value="src" />
+    <property name="build.dir" value="target/classes" />
+    <property name="sources.dir" value="src/main/java" />
     <property name="images.build.dir" value="${build.dir}/img" />
-    <property name="images.dir" value="src/img" />
+    <property name="images.dir" value="src/main/resources/img" />
     <property environment="env" />
 
     <target name="clean">
