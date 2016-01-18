@@ -24,26 +24,21 @@ public class Main extends Application {
 
 	 @Override
 	 public void start(Stage primaryStage) {
+		 final int OFFSET_X = 300;
+		 final int OFFSET_Y = 2000;
 		 Game game = new Game();
-		 GameElement mario = new Player(100,100);
+		 GameElement mario = new Player(OFFSET_X + GameConstants.BLOCK_SIDE_SIZE, OFFSET_Y);
 		 game.addElement(mario);
 		 
-		 game.addElement(new Block(100 - GameConstants.BLOCK_SIDE_SIZE, 100));
-		 for (int i = 0; i < 10; ++i) {
-			Block block = new Block(100 + GameConstants.BLOCK_SIDE_SIZE * i ,100 + GameConstants.MARIO_HEIGHT);
-//			game.addElement(block);
+		 for (int i = 0; i < 2; ++i) {
+			game.addElement(new Block(OFFSET_X, OFFSET_Y - i * GameConstants.BLOCK_SIDE_SIZE * i));
 		 }
-		 for (int i = 0; i < 10; ++i) {
-			Block block = new Block(100 + GameConstants.BLOCK_SIDE_SIZE * i ,100 + GameConstants.MARIO_HEIGHT/2);
-	//		game.addElement(block);
+		 for (int i = 0; i < 2; ++i) {
+			 game.addElement(new Block(OFFSET_X + 20 * GameConstants.BLOCK_SIDE_SIZE, OFFSET_Y - i * GameConstants.BLOCK_SIDE_SIZE));
 		 }
-		 for (int i = 0; i < 10; ++i) {
-			Block block = new Block(100 + GameConstants.BLOCK_SIDE_SIZE * i ,100 + 3*(GameConstants.BLOCK_SIDE_SIZE/2));
-			game.addElement(block);
+		 for (int i = 1; i < 20; ++i) {
+			game.addElement(new Block(OFFSET_X + GameConstants.BLOCK_SIDE_SIZE * i ,OFFSET_Y + 3*(GameConstants.BLOCK_SIDE_SIZE/2)));
 		 }
-
-		 
-		 game.addElement(new Block(100 + 10 * GameConstants.BLOCK_SIDE_SIZE, 100));
 
 		 GameView view = new GameView();
 	     final GameController controller = new GameController(game, view);
