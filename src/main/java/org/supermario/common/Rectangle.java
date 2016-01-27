@@ -1,4 +1,4 @@
-package org.supermario.model;
+package org.supermario.common;
 
 public class Rectangle {
 	private Vector2D topLeft;
@@ -13,7 +13,7 @@ public class Rectangle {
 		this.computeBoundaries(centerPosition);
 	}
 
-	public void moveCenter(Vector2D centerPosition) {
+	public void moveAbsolute(Vector2D centerPosition) {
 		this.computeBoundaries(centerPosition);
 	}
 	
@@ -29,5 +29,10 @@ public class Rectangle {
 		int y = centerPosition.getY() - (height/2);
 		this.topLeft = new Vector2D(x, y);
 		this.bottomRight = new Vector2D(x + width, y + height);		
+	}
+
+	public void moveRelative(Vector2D movement) {
+		Vector2D center = this.topLeft.sum(new Vector2D(width/2, height/2));
+		this.computeBoundaries(center.sum(movement));
 	}
 }

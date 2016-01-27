@@ -1,23 +1,22 @@
-package org.supermario.view;
+package org.supermario.view.elementViews;
 
 import java.util.Map;
 import java.util.Observable;
-import java.util.Observer;
 import java.util.TreeMap;
 
 import javafx.scene.canvas.GraphicsContext;
 
-import org.supermario.model.Direction;
+import org.supermario.common.Direction;
+import org.supermario.common.Vector2D;
 import org.supermario.model.GameConstants;
-import org.supermario.model.GameElement;
-import org.supermario.model.Player;
-import org.supermario.model.Vector2D;
+import org.supermario.model.elements.GameElement;
+import org.supermario.view.drawing.Animation;
 
 public class PlayerView extends GameElementView {
-	private Player player;
+	private GameElement player;
 	private Map<Direction, Animation> animationsMap;
 	
-	public PlayerView(Player player, GraphicsContext gc) {
+	public PlayerView(GameElement player, GraphicsContext gc) {
 		super(gc, "img/Mario_Stand.png");
 		this.player = player;
 

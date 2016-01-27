@@ -1,4 +1,4 @@
-package org.supermario.model;
+package org.supermario.common;
 
 public enum Direction {
 	LEFT,

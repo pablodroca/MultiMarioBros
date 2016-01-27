@@ -1,14 +1,14 @@
-package org.supermario.view;
+package org.supermario.view.elementViews;
 
 import java.util.Observable;
 import java.util.Observer;
 
 import javafx.scene.canvas.GraphicsContext;
 
-import org.supermario.model.Direction;
+import org.supermario.common.Vector2D;
 import org.supermario.model.GameConstants;
-import org.supermario.model.GameElement;
-import org.supermario.model.Vector2D;
+import org.supermario.view.ViewConstants;
+import org.supermario.view.drawing.Sprite;
 
 public abstract class GameElementView implements Observer {
 	private Sprite sprite;
@@ -35,7 +35,7 @@ public abstract class GameElementView implements Observer {
 
 	@Override
 	public void update(Observable arg0, Object arg1) {
-		this.draw();
+		//do nothing
 	}
 	
 	public Sprite getSprite() {

@@ -2,9 +2,13 @@ package org.supermario.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
 import java.util.concurrent.TimeUnit;
 
-public class Game implements Runnable {
+import org.supermario.model.elements.GameElement;
+import org.supermario.model.elements.Player;
+
+public class Game extends Observable implements Runnable {
 	private List<GameElement> elements = new ArrayList<GameElement>();
 	private Player player;
 		
@@ -13,7 +17,7 @@ public class Game implements Runnable {
 		element.addToGame(this);
 	}
 
-	void setPlayer(Player player) {
+	public void setPlayer(Player player) {
 		this.player = player;
 	}
 
@@ -23,6 +27,9 @@ public class Game implements Runnable {
 			long loopStart = System.currentTimeMillis();
 			this.moveElements();
 			this.checkCollisions();
+			this.setChanged();
+			this.notifyObservers();
+			
 			long loopElapsed = System.currentTimeMillis() - loopStart;
 			long delay = loopElapsed < GameConstants.GAME_LOOP_MS ? 
 					GameConstants.GAME_LOOP_MS - loopElapsed : 1;
@@ -57,6 +64,12 @@ public class Game implements Runnable {
 
 	public Iterable<GameElement> getElements() {
 		return this.elements;
+	}
+
+	public void accept(GameElementVisitor visitor) {
+		for (GameElement element : this.elements) {
+			element.accept(visitor);			
+		}
 	}
 
 }
