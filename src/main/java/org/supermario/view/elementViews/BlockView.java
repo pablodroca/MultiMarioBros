@@ -1,4 +1,4 @@
-package org.supermario.view;
+package org.supermario.view.elementViews;
 
 import java.util.Observer;
 

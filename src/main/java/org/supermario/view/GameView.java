@@ -24,6 +24,10 @@ import org.supermario.model.elements.Block;
 import org.supermario.model.elements.GameElement;
 import org.supermario.model.elements.Koopa;
 import org.supermario.model.elements.Player;
+import org.supermario.view.elementViews.BlockView;
+import org.supermario.view.elementViews.GameElementView;
+import org.supermario.view.elementViews.KoopaView;
+import org.supermario.view.elementViews.PlayerView;
 
 
 

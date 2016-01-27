@@ -1,4 +1,4 @@
-package org.supermario.view;
+package org.supermario.view.elementViews;
 
 import java.util.Map;
 import java.util.Observable;
@@ -12,16 +12,16 @@ import org.supermario.model.GameConstants;
 import org.supermario.model.elements.GameElement;
 import org.supermario.view.drawing.Animation;
 
-public class PlayerView extends GameElementView {
-	private GameElement player;
+public class KoopaView extends GameElementView {
+	private GameElement koopa;
 	private Map<Direction, Animation> animationsMap;
 	
-	public PlayerView(GameElement player, GraphicsContext gc) {
-		super(gc, "img/Mario_Stand.png");
-		this.player = player;
+	public KoopaView(GameElement koopa, GraphicsContext gc) {
+		super(gc, "img/Koopa_Left1.png");
+		this.koopa = koopa;
 
-		Animation left = this.getSprite().addAnimation("img/Mario_Left1.png", "img/Mario_Left2.png", "img/Mario_Left3.png");
-		Animation right = this.getSprite().addAnimation("img/Mario_Right1.png", "img/Mario_Right2.png", "img/Mario_Right3.png");
+		Animation left = this.getSprite().addAnimation("img/Koopa_Left1.png", "img/Koopa_Left2.png");
+		Animation right = this.getSprite().addAnimation("img/Koopa_Right1.png", "img/Koopa_Right2.png");
 		
 		this.animationsMap = new TreeMap<Direction, Animation>();
 		this.animationsMap.put(Direction.LEFT, left);
@@ -35,7 +35,7 @@ public class PlayerView extends GameElementView {
 	}
 
 	private void defineAnimationForDirection() {
-		Direction direction = this.player.getDirection();
+		Direction direction = this.koopa.getDirection();
 		if (this.animationsMap.containsKey(direction)) {
 			Animation animation = this.animationsMap.get(direction);
 			this.getSprite().changeCurrentAnimation(animation);
@@ -46,17 +46,17 @@ public class PlayerView extends GameElementView {
 
 	@Override
 	public Vector2D getElementPosition() {
-		return this.player.getPosition();
+		return this.koopa.getPosition();
 	}
 
 	@Override
 	public int getElementHeight() {
-		return GameConstants.MARIO_HEIGHT;
+		return GameConstants.KOOPA_HEIGHT;
 	}
 	
 	@Override
 	public int getElementWidth() {
-		return GameConstants.MARIO_WIDTH;
+		return GameConstants.KOOPA_WIDTH;
 	}
 	
 }

@@ -1,4 +1,4 @@
-package org.supermario.view;
+package org.supermario.view.elementViews;
 
 import java.util.Observable;
 import java.util.Observer;
@@ -7,6 +7,7 @@ import javafx.scene.canvas.GraphicsContext;
 
 import org.supermario.common.Vector2D;
 import org.supermario.model.GameConstants;
+import org.supermario.view.ViewConstants;
 import org.supermario.view.drawing.Sprite;
 
 public abstract class GameElementView implements Observer {
