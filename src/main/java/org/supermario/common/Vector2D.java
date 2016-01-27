@@ -1,4 +1,4 @@
-package org.supermario.model;
+package org.supermario.common;
 
 public class Vector2D {
 	private int x;

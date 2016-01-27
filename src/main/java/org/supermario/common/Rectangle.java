@@ -1,4 +1,4 @@
-package org.supermario.model;
+package org.supermario.common;
 
 public class Rectangle {
 	private Vector2D topLeft;

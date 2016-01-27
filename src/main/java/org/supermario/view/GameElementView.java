@@ -5,10 +5,8 @@ import java.util.Observer;
 
 import javafx.scene.canvas.GraphicsContext;
 
-import org.supermario.model.Direction;
+import org.supermario.common.Vector2D;
 import org.supermario.model.GameConstants;
-import org.supermario.model.GameElement;
-import org.supermario.model.Vector2D;
 
 public abstract class GameElementView implements Observer {
 	private Sprite sprite;

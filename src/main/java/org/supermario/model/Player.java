@@ -1,5 +1,8 @@
 package org.supermario.model;
 
+import org.supermario.common.Rectangle;
+import org.supermario.common.Vector2D;
+
 
 public class Player extends GameElement {
 	private final static Vector2D diffVelocityLeft = new Vector2D(-GameConstants.MARIO_WALK_STEP, 0);

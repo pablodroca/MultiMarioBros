@@ -2,6 +2,10 @@ package org.supermario.model;
 
 import java.util.Observable;
 
+import org.supermario.common.Direction;
+import org.supermario.common.Rectangle;
+import org.supermario.common.Vector2D;
+
 public abstract class GameElement extends Observable {
 	private Vector2D position;
 	private Vector2D velocity;

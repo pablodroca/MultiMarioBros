@@ -2,15 +2,14 @@ package org.supermario.view;
 
 import java.util.Map;
 import java.util.Observable;
-import java.util.Observer;
 import java.util.TreeMap;
 
 import javafx.scene.canvas.GraphicsContext;
 
-import org.supermario.model.Direction;
+import org.supermario.common.Direction;
+import org.supermario.common.Vector2D;
 import org.supermario.model.GameConstants;
 import org.supermario.model.GameElement;
-import org.supermario.model.Vector2D;
 
 public class PlayerView extends GameElementView {
 	private GameElement player;
