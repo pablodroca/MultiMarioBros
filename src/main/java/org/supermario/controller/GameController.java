@@ -21,14 +21,12 @@ public class GameController {
 	public GameController(Game game, GameView view){
 		this.game = game;
 		this.view = view;
-		this.player = game.getPlayer();
+		this.player = this.game.getPlayer();
 		this.keyboardController = new KeyboardController(this.player);
 		
-		for (GameElement element : game.getElements()) {
-			if (element != player) //TODO improve it
-				this.view.register((Block)element);			
-		}
-		this.view.register(this.player);
+		ViewsBuilderVisitor viewsBuilder = new ViewsBuilderVisitor(this.view);
+		this.game.accept(viewsBuilder);
+		this.game.addObserver(this.view);
 		this.view.bindTo(this.keyboardController);
 	}
 	

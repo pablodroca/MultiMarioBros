@@ -10,14 +10,13 @@ import javafx.scene.canvas.GraphicsContext;
 import org.supermario.model.Direction;
 import org.supermario.model.GameConstants;
 import org.supermario.model.GameElement;
-import org.supermario.model.Player;
 import org.supermario.model.Vector2D;
 
 public class PlayerView extends GameElementView {
-	private Player player;
+	private GameElement player;
 	private Map<Direction, Animation> animationsMap;
 	
-	public PlayerView(Player player, GraphicsContext gc) {
+	public PlayerView(GameElement player, GraphicsContext gc) {
 		super(gc, "img/Mario_Stand.png");
 		this.player = player;
 

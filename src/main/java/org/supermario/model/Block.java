@@ -1,24 +1,18 @@
 package org.supermario.model;
 
 public class Block extends GameElement {
-	private Vector2D position;
-	private Rectangle[] borders;
+	private Rectangle boundaries;
 
 	public Block(int x, int y) {
-		this.position = new Vector2D(x, y);
+		super(x, y);
 		int w = GameConstants.BLOCK_SIDE_SIZE - GameConstants.BOUNDARIES_TOLERANCE;
 		int h = GameConstants.BLOCK_SIDE_SIZE - GameConstants.BOUNDARIES_TOLERANCE;
-		this.borders = new Rectangle[]{new Rectangle(position, w, h)};
+		this.boundaries = new Rectangle(this.getPosition(), w, h);
 	}
-
+	
 	@Override
-	public void move() {
-		//Do nothing for static blocks
-	}
-
-	@Override
-	public void undoMove() {
-		//Do nothing for static blocks
+	public void accept(GameElementVisitor visitor) {
+		visitor.visit(this);
 	}
 
 	@Override
@@ -26,12 +20,13 @@ public class Block extends GameElement {
 		//Do nothing
 	}
 
-	public Vector2D getPosition() {
-		return this.position;
+	@Override
+	public Rectangle[] getBoundaries() {
+		return new Rectangle[] {this.boundaries};
 	}
 
 	@Override
-	public Rectangle[] getBorderShapes() {
-		return this.borders;
+	protected void changeBoundariesPosition(Vector2D newPosition) {
+		this.boundaries.moveAbsolute(newPosition);				
 	}
 }

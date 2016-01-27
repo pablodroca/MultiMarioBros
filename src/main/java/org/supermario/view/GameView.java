@@ -22,6 +22,8 @@ import javafx.stage.Stage;
 
 import org.supermario.model.Block;
 import org.supermario.model.GameConstants;
+import org.supermario.model.GameElement;
+import org.supermario.model.Koopa;
 import org.supermario.model.Player;
 
 
@@ -64,6 +66,7 @@ public class GameView extends Canvas implements Observer, ChangeListener<Number>
 		});
 		
 		this.drawInnerViews();
+		
 	}
 
 	private void scaleInnerViews() {
@@ -96,17 +99,25 @@ public class GameView extends Canvas implements Observer, ChangeListener<Number>
 	public void bindTo(KeyboardInputListener listener) {
 		this.inputListener = listener;
 	}
-	
+
 	public void register(Player mario) {
-		PlayerView marioView = new PlayerView(mario, this.getGraphicsContext2D());
-		mario.addObserver(this);
-		mario.addObserver(marioView);
-		this.innerViews.add(marioView);
+		PlayerView view = new PlayerView(mario, this.getGraphicsContext2D());
+		this.registerView(mario, view);
+	}
+	
+	public void register(Koopa koopa) {
+		KoopaView view = new KoopaView(koopa, this.getGraphicsContext2D());
+		this.registerView(koopa, view);
+	}
+
+	private void registerView(GameElement element, GameElementView view) {
+		element.addObserver(view);
+		this.innerViews.add(view);
 	}
 
 	public void register(Block block) {
-		BlockView blockView = new BlockView(block, this.getGraphicsContext2D());
-		this.innerViews.add(blockView);
+		BlockView view = new BlockView(block, this.getGraphicsContext2D());
+		this.registerView(block, view);
 	}
 
 	public void show(Stage primaryStage) {

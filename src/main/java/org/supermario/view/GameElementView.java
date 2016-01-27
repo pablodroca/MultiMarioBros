@@ -35,7 +35,7 @@ public abstract class GameElementView implements Observer {
 
 	@Override
 	public void update(Observable arg0, Object arg1) {
-		this.draw();
+		//do nothing
 	}
 	
 	public Sprite getSprite() {
