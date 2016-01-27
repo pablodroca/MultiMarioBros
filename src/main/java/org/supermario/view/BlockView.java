@@ -5,8 +5,8 @@ import java.util.Observer;
 import javafx.scene.canvas.GraphicsContext;
 
 import org.supermario.common.Vector2D;
-import org.supermario.model.Block;
 import org.supermario.model.GameConstants;
+import org.supermario.model.elements.Block;
 
 public class BlockView extends GameElementView implements Observer {
 	private Block block;

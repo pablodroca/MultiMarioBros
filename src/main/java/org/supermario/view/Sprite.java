@@ -5,7 +5,6 @@ import java.util.List;
 
 import javafx.application.Platform;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.Image;
 
 public class Sprite {
 	private GraphicsContext graphics;

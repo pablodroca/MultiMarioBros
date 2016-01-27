@@ -3,13 +3,9 @@ package org.supermario.controller;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import org.supermario.model.Block;
 import org.supermario.model.Game;
-import org.supermario.model.GameElement;
-import org.supermario.model.Player;
+import org.supermario.model.elements.Player;
 import org.supermario.view.GameView;
-import org.supermario.view.Key;
-import org.supermario.view.KeyboardInputListener;
 
 public class GameController {
 	private Game game;

@@ -1,6 +1,6 @@
 package org.supermario.controller;
 
-import org.supermario.model.Player;
+import org.supermario.model.elements.Player;
 import org.supermario.view.Key;
 import org.supermario.view.KeyboardInputListener;
 

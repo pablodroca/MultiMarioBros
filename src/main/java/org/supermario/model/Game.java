@@ -5,6 +5,9 @@ import java.util.List;
 import java.util.Observable;
 import java.util.concurrent.TimeUnit;
 
+import org.supermario.model.elements.GameElement;
+import org.supermario.model.elements.Player;
+
 public class Game extends Observable implements Runnable {
 	private List<GameElement> elements = new ArrayList<GameElement>();
 	private Player player;
@@ -14,7 +17,7 @@ public class Game extends Observable implements Runnable {
 		element.addToGame(this);
 	}
 
-	void setPlayer(Player player) {
+	public void setPlayer(Player player) {
 		this.player = player;
 	}
 

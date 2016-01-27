@@ -1,21 +1,17 @@
 package org.supermario;
-import java.util.concurrent.ExecutorService;
-
-import org.supermario.controller.GameController;
-import org.supermario.model.Block;
-import org.supermario.model.Game;
-import org.supermario.model.GameConstants;
-import org.supermario.model.GameElement;
-import org.supermario.model.Koopa;
-import org.supermario.model.Player;
-import org.supermario.view.GameView;
-
 import javafx.application.Application;
 import javafx.event.EventHandler;
-import javafx.scene.Scene;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+
+import org.supermario.controller.GameController;
+import org.supermario.model.Game;
+import org.supermario.model.GameConstants;
+import org.supermario.model.elements.Block;
+import org.supermario.model.elements.GameElement;
+import org.supermario.model.elements.Koopa;
+import org.supermario.model.elements.Player;
+import org.supermario.view.GameView;
 
 
 public class Main extends Application {

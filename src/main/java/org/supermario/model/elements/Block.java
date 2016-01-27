@@ -1,7 +1,10 @@
-package org.supermario.model;
+package org.supermario.model.elements;
 
 import org.supermario.common.Rectangle;
 import org.supermario.common.Vector2D;
+import org.supermario.model.Game;
+import org.supermario.model.GameConstants;
+import org.supermario.model.GameElementVisitor;
 
 public class Block extends GameElement {
 	private Rectangle boundaries;

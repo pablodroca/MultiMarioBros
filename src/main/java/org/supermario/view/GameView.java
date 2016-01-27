@@ -20,11 +20,10 @@ import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-import org.supermario.model.Block;
-import org.supermario.model.GameConstants;
-import org.supermario.model.GameElement;
-import org.supermario.model.Koopa;
-import org.supermario.model.Player;
+import org.supermario.model.elements.Block;
+import org.supermario.model.elements.GameElement;
+import org.supermario.model.elements.Koopa;
+import org.supermario.model.elements.Player;
 
 
 

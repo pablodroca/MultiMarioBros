@@ -9,7 +9,7 @@ import javafx.scene.canvas.GraphicsContext;
 import org.supermario.common.Direction;
 import org.supermario.common.Vector2D;
 import org.supermario.model.GameConstants;
-import org.supermario.model.GameElement;
+import org.supermario.model.elements.GameElement;
 
 public class PlayerView extends GameElementView {
 	private GameElement player;
