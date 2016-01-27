@@ -40,7 +40,10 @@ public class Main extends Application {
 		 for (int i = 0; i < 3; ++i) {
 			 game.addElement(new Block(OFFSET_X + 20 * GameConstants.BLOCK_SIDE_SIZE, OFFSET_Y - GameConstants.BLOCK_SIDE_SIZE /2 - i * GameConstants.BLOCK_SIDE_SIZE));
 		 }
+                 GameElement koopa = new Koopa(OFFSET_X + 19 * GameConstants.BLOCK_SIDE_SIZE, OFFSET_Y - GameConstants.KOOPA_HEIGHT/2);
+                 game.addElement(koopa);
 		 
+
 		 GameView view = new GameView();
 	     final GameController controller = new GameController(game, view);
 	     controller.start();
