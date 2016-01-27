@@ -7,6 +7,7 @@ import javafx.scene.canvas.GraphicsContext;
 
 import org.supermario.common.Vector2D;
 import org.supermario.model.GameConstants;
+import org.supermario.view.drawing.Sprite;
 
 public abstract class GameElementView implements Observer {
 	private Sprite sprite;

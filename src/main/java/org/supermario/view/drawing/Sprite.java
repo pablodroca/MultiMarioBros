@@ -1,4 +1,4 @@
-package org.supermario.view;
+package org.supermario.view.drawing;
 
 import java.util.ArrayList;
 import java.util.List;

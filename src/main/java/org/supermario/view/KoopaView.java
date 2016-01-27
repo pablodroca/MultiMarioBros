@@ -10,6 +10,7 @@ import org.supermario.common.Direction;
 import org.supermario.common.Vector2D;
 import org.supermario.model.GameConstants;
 import org.supermario.model.elements.GameElement;
+import org.supermario.view.drawing.Animation;
 
 public class KoopaView extends GameElementView {
 	private GameElement koopa;
