@@ -55,9 +55,4 @@ public class Koopa extends GameElement {
 	public void resolveCollision() {
 		this.changeVelocity(this.getVelocity().negative());
 	}
-	
-	/*@Override
-	public void resolveCollisionWith(Player player) {
-		// TODO
-	}*/
 }

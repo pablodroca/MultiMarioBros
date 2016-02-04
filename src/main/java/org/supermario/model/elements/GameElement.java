@@ -21,19 +21,7 @@ public abstract class GameElement extends Observable {
 
 	public abstract void addToGame(Game game);
 	public abstract void accept(GameElementVisitor visitor);
-	protected abstract void resolveCollision();
-	
-	public void resolveCollisionWith(Player player) {
-		resolveCollision();
-	}
-	
-	public void resolveCollisionWith(Koopa koopa) {
-		resolveCollision();
-	}
-	
-	public void resolveCollisionWith(Block block) {
-		resolveCollision();
-	}
+	public abstract void resolveCollision();
 
 	public boolean checkCollision(GameElement targetObj) {
 		for (Rectangle r1 : this.getBoundaries()) {

@@ -14,17 +14,20 @@ public class CollisionsResolverVisitor implements GameElementVisitor {
 	
 	@Override
 	public void visit(Koopa koopa) {
-		this.element.resolveCollisionWith(koopa);
+		// TODO resolve collision with koopa
+		this.element.resolveCollision();
 	}
 
 	@Override
 	public void visit(Player player) {
-		this.element.resolveCollisionWith(player);
+		// TODO resolve collision with player
+		this.element.resolveCollision();
 	}
 
 	@Override
 	public void visit(Block block) {
-		this.element.resolveCollisionWith(block);
+		// TODO resolve collision with block
+		this.element.resolveCollision();
 	}
 
 }
