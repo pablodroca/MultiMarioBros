@@ -11,8 +11,8 @@ public class Block extends GameElement {
 
 	public Block(int x, int y) {
 		super(x, y);
-		int w = GameConstants.BLOCK_SIDE_SIZE - GameConstants.BOUNDARIES_TOLERANCE;
-		int h = GameConstants.BLOCK_SIDE_SIZE - GameConstants.BOUNDARIES_TOLERANCE;
+		int w = GameConstants.BLOCK_SIDE_SIZE - GameConstants.BOUNDARIES_COLLISION_TOLERANCE;
+		int h = GameConstants.BLOCK_SIDE_SIZE - GameConstants.BOUNDARIES_COLLISION_TOLERANCE;
 		this.boundaries = new Rectangle(this.getPosition(), w, h);
 	}
 	
@@ -34,5 +34,13 @@ public class Block extends GameElement {
 	@Override
 	protected void changeBoundariesPosition(Vector2D newPosition) {
 		this.boundaries.moveAbsolute(newPosition);				
+	}
+
+	@Override
+	public void resolveCollisionWith(GameElement rightObj) {
+		rightObj.collideWith(this);
+	}
+
+	public void destroy() {
 	}
 }

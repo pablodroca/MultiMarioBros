@@ -17,7 +17,7 @@ public class Rectangle {
 		this.computeBoundaries(centerPosition);
 	}
 	
-	public boolean collideWith(Rectangle target) {
+	public boolean inCollisionWith(Rectangle target) {
 		return ! ( bottomRight.getX() < target.topLeft.getX() 
 				|| bottomRight.getY() < target.topLeft.getY()
 				|| topLeft.getX() > target.bottomRight.getX()
@@ -34,5 +34,13 @@ public class Rectangle {
 	public void moveRelative(Vector2D movement) {
 		Vector2D center = this.topLeft.sum(new Vector2D(width/2, height/2));
 		this.computeBoundaries(center.sum(movement));
+	}
+
+	public boolean isAbove(Rectangle other, int tolerance) {
+		return bottomRight.getY() < other.topLeft.getY() + tolerance;
+	}
+
+	public boolean isBelow(Rectangle other, int tolerance) {
+		return other.isAbove(this, tolerance);
 	}
 }

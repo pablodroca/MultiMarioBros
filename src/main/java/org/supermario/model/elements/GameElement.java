@@ -6,6 +6,7 @@ import org.supermario.common.Direction;
 import org.supermario.common.Rectangle;
 import org.supermario.common.Vector2D;
 import org.supermario.model.Game;
+import org.supermario.model.GameConstants;
 import org.supermario.model.GameElementVisitor;
 
 public abstract class GameElement extends Observable {
@@ -16,30 +17,41 @@ public abstract class GameElement extends Observable {
 	public GameElement(int x, int y) {
 		this.position = new Vector2D(x,y);
 		this.velocity = new Vector2D(0,0);
-		this.acceleration = new Vector2D(0,0);
+		this.acceleration = new Vector2D(0, 0);
 	}
 
 	public abstract void addToGame(Game game);
 	public abstract void accept(GameElementVisitor visitor);
 
-	public boolean checkCollision(GameElement targetObj) {
+	public boolean inCollisionWith(GameElement targetObj) {
 		for (Rectangle r1 : this.getBoundaries()) {
 			for (Rectangle r2: targetObj.getBoundaries()) {
-				if (r1.collideWith(r2))
+				if (r1.inCollisionWith(r2))
 					return true;
 			}
 		}
 		return false;
 	}
 
+	public void collideWith(Koopa koopa) {
+		//do nothing by default
+	}
+
+	public void collideWith(Player player) {
+		//do nothing by default
+	}
+
+	public void collideWith(Block block) {
+		//do nothing by default
+	}
+
 	public abstract Rectangle[] getBoundaries() ;
 	protected abstract void changeBoundariesPosition(Vector2D newPosition);
 
-	public void resolveCollisionWith(GameElement rightObj) {
-		this.undoMove();
-	}
+	public abstract void resolveCollisionWith(GameElement rightObj);
+
 	public void move() {
-		Vector2D newPosition = this.position.sum(this.velocity);
+		Vector2D newPosition = this.position.sum(this.velocity).sum(this.acceleration.scale(.5));
 		this.velocity = this.velocity.sum(this.acceleration);
 		changePosition(newPosition);
 	}
@@ -87,5 +99,18 @@ public abstract class GameElement extends Observable {
 	
 	public Vector2D getVelocity() {
 		return this.velocity;
+	}
+
+	public boolean isAbove(GameElement element) {
+		for (Rectangle boundary : this.getBoundaries()) {
+			for (Rectangle elementBoundary : element.getBoundaries()) {
+				if (! boundary.isAbove(elementBoundary, GameConstants.BOUNDARIES_RELATIVE_POSITION_TOLERANCE)) {
+					//With only one boundary not above the other element,
+					//we can ensure the current object isn't above the one given by parameter
+					return false;
+				}
+			}
+		}
+		return true;
 	}
 }

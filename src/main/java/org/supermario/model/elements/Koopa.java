@@ -13,9 +13,10 @@ public class Koopa extends GameElement {
 		super(x, y);
 		
 		this.changeVelocity(new Vector2D(- GameConstants.KOOPA_WALK_STEP, 0));
+		this.changeAcceleration(new Vector2D(0, GameConstants.GRAVITY_ACCELERATION));
 		
-		int w = GameConstants.KOOPA_WIDTH - GameConstants.BOUNDARIES_TOLERANCE;
-		int h = GameConstants.KOOPA_HEIGHT - GameConstants.BOUNDARIES_TOLERANCE;
+		int w = GameConstants.KOOPA_WIDTH - GameConstants.BOUNDARIES_COLLISION_TOLERANCE;
+		int h = GameConstants.KOOPA_HEIGHT - GameConstants.BOUNDARIES_COLLISION_TOLERANCE;
 		int headWidth = (int) (0.30 * w);
 		int headHeight = (int) (0.30 * h);
 		int bodyWidth = w;
@@ -53,8 +54,35 @@ public class Koopa extends GameElement {
 
 	@Override
 	public void resolveCollisionWith(GameElement rightObj) {
-		super.resolveCollisionWith(rightObj);
+		rightObj.collideWith(this);
+	}
+
+	@Override
+	public void collideWith(Koopa koopa) {
+		this.undoMove();
 		this.changeVelocity(this.getVelocity().negative());
 	}
 
+	@Override
+	public void collideWith(Player player) {
+		if (! player.isAbove(this))
+			player.hit();
+	}
+
+	@Override
+	public void collideWith(Block block) {
+		this.undoMove();
+		if (this.isAbove(block)) {
+			this.changeAcceleration(new Vector2D(0, 0));
+			this.changeVelocity(new Vector2D(this.getVelocity().getX(), 0));
+		}
+		else {
+			this.changeVelocity(this.getVelocity().negative());
+		}
+	}
+
+	public void smash() {
+
+		this.changeVelocity(new Vector2D(this.getVelocity().getX(), 0));
+	}
 }

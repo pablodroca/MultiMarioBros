@@ -26,6 +26,10 @@ public class Vector2D {
 		Vector2D toCompare = (Vector2D)obj;
 		return this.x == toCompare.x && this.y == toCompare.y;
 	}
+	@Override
+	public String toString() {
+		return String.format("[%d,%d]", this.x, this.y);
+	}
 
 	public Vector2D substract(Vector2D other) {
 		return new Vector2D(this.x - other.x, this.y - other.y);
@@ -33,5 +37,9 @@ public class Vector2D {
 
 	public Vector2D negative() {
 		return new Vector2D(-this.x, -this.y);
+	}
+
+	public Vector2D scale(double scaleFactor) {
+		return new Vector2D((int)(this.x * scaleFactor), (int) (this.y * scaleFactor));
 	}
 }

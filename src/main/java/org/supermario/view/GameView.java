@@ -23,7 +23,6 @@ import javafx.stage.Stage;
 import org.supermario.model.elements.Block;
 import org.supermario.model.elements.GameElement;
 import org.supermario.model.elements.Koopa;
-import org.supermario.model.elements.Player;
 import org.supermario.view.elementViews.BlockView;
 import org.supermario.view.elementViews.GameElementView;
 import org.supermario.view.elementViews.KoopaView;
@@ -103,7 +102,7 @@ public class GameView extends Canvas implements Observer, ChangeListener<Number>
 		this.inputListener = listener;
 	}
 
-	public void register(Player mario) {
+	public void register(GameElement mario) {
 		PlayerView view = new PlayerView(mario, this.getGraphicsContext2D());
 		this.registerView(mario, view);
 	}
