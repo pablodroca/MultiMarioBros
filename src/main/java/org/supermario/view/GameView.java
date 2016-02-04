@@ -20,13 +20,8 @@ import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-import org.supermario.model.elements.Block;
 import org.supermario.model.elements.GameElement;
-import org.supermario.model.elements.Koopa;
-import org.supermario.view.elementViews.BlockView;
 import org.supermario.view.elementViews.GameElementView;
-import org.supermario.view.elementViews.KoopaView;
-import org.supermario.view.elementViews.PlayerView;
 
 
 
@@ -102,24 +97,10 @@ public class GameView extends Canvas implements Observer, ChangeListener<Number>
 		this.inputListener = listener;
 	}
 
-	public void register(GameElement mario) {
-		PlayerView view = new PlayerView(mario, this.getGraphicsContext2D());
-		this.registerView(mario, view);
-	}
-	
-	public void register(Koopa koopa) {
-		KoopaView view = new KoopaView(koopa, this.getGraphicsContext2D());
-		this.registerView(koopa, view);
-	}
 
-	private void registerView(GameElement element, GameElementView view) {
+	public void registerView(GameElement element, GameElementView view) {
 		element.addObserver(view);
 		this.innerViews.add(view);
-	}
-
-	public void register(Block block) {
-		BlockView view = new BlockView(block, this.getGraphicsContext2D());
-		this.registerView(block, view);
 	}
 
 	public void show(Stage primaryStage) {
