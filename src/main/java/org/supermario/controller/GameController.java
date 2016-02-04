@@ -4,6 +4,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import org.supermario.model.Game;
+import org.supermario.model.GameElementVisitor;
 import org.supermario.model.elements.Player;
 import org.supermario.view.GameView;
 
@@ -20,7 +21,7 @@ public class GameController {
 		this.player = this.game.getPlayer();
 		this.keyboardController = new KeyboardController(this.player);
 		
-		ViewsBuilderVisitor viewsBuilder = new ViewsBuilderVisitor(this.view);
+		GameElementVisitor viewsBuilder = new ViewsBuilderVisitor(this.view);
 		this.game.accept(viewsBuilder);
 		this.game.addObserver(this.view);
 		this.view.bindTo(this.keyboardController);

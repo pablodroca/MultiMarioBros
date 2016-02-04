@@ -45,8 +45,8 @@ public class Game extends Observable implements Runnable {
 		for (GameElement leftObj : this.elements) {
 			for (GameElement rightObj : this.elements) {
 				if (leftObj != rightObj && leftObj.checkCollision(rightObj)) {
-					leftObj.resolveCollisionWith(rightObj);
-					rightObj.resolveCollisionWith(leftObj);
+					GameElementVisitor collisionsResolver = new CollisionsResolverVisitor(leftObj);
+					rightObj.accept(collisionsResolver);
 				}
 			}
 		}

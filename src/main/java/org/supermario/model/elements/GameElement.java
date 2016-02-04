@@ -21,6 +21,19 @@ public abstract class GameElement extends Observable {
 
 	public abstract void addToGame(Game game);
 	public abstract void accept(GameElementVisitor visitor);
+	protected abstract void resolveCollision();
+	
+	public void resolveCollisionWith(Player player) {
+		resolveCollision();
+	}
+	
+	public void resolveCollisionWith(Koopa koopa) {
+		resolveCollision();
+	}
+	
+	public void resolveCollisionWith(Block block) {
+		resolveCollision();
+	}
 
 	public boolean checkCollision(GameElement targetObj) {
 		for (Rectangle r1 : this.getBoundaries()) {
@@ -35,9 +48,6 @@ public abstract class GameElement extends Observable {
 	public abstract Rectangle[] getBoundaries() ;
 	protected abstract void changeBoundariesPosition(Vector2D newPosition);
 
-	public void resolveCollisionWith(GameElement rightObj) {
-		this.undoMove();
-	}
 	public void move() {
 		Vector2D newPosition = this.position.sum(this.velocity);
 		this.velocity = this.velocity.sum(this.acceleration);

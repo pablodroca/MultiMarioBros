@@ -35,4 +35,8 @@ public class Block extends GameElement {
 	protected void changeBoundariesPosition(Vector2D newPosition) {
 		this.boundaries.moveAbsolute(newPosition);				
 	}
+	
+	public void resolveCollision() {
+		//Do nothing
+	}
 }

@@ -27,8 +27,9 @@ public class Player extends GameElement {
 		visitor.visit(this);
 	}
 	
-	public void resolveCollisionWith(GameElement rightObj) {
-		super.resolveCollisionWith(rightObj);
+	@Override
+	public void resolveCollision() {
+		this.undoMove();
 		this.changeAcceleration(new Vector2D(0, 0));
 		this.changeVelocity(new Vector2D(this.getVelocity().getX(), 0));
 	}
